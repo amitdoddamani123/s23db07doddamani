@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  h1= title
+
+
+  - let results = [{grade: 'A',gradeMarks: 90,gradeCourse: 'Web Application'},{grade: 'B',gradeMarks: 75,gradeCourse: 'OOPS'},{grade: 'C',gradeMarks: 60, gradeCourse: 'ADB'}]
+
+  div(class="container-fluid")
+    div(class="row")
+      each q, index in results
+        div(class="col-sm-2" onclick=`buy(${index})`) #{q.grade}, #{q.gradeMarks}, #{q.gradeCourse}
+
+  script.
+    function buy(x)
+    {
+    alert(`your index is ${x}`)
+    } 
