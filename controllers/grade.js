@@ -16,7 +16,7 @@ exports.grade_list = async function(req, res) {
 exports.grade_view_all_Page = async function(req, res) {
     try{
     theGrades = await grade.find();
-    res.render('grades', { title: 'grade Search Results', result: theGrades });
+    res.render('grades', { title: 'grade Search Results', results: theGrades });
     }
     catch(err){
     res.status(500);
@@ -26,8 +26,15 @@ exports.grade_view_all_Page = async function(req, res) {
 
 
 // for a specific grade.
-exports.grade_detail = function(req, res) {
-res.send('NOT IMPLEMENTED: grade detail: ' + req.params.id);
+exports.grade_detail = async function(req, res) {
+console.log("detail" + req.params.id)
+try {
+result = await grade.findById( req.params.id)
+res.send(result)
+} catch (error) {
+res.status(500)
+res.send(`{"error": document for id ${req.params.id} not found`);
+}
 };
 // Handle grade create on POST.
 exports.grade_create_post = async function(req, res) {
@@ -53,8 +60,25 @@ exports.grade_create_post = async function(req, res) {
 exports.grade_delete = function(req, res) {
 res.send('NOT IMPLEMENTED: grade delete DELETE ' + req.params.id);
 };
+
 // Handle grade update form on PUT.
-exports.grade_update_put = function(req, res) {
-res.send('NOT IMPLEMENTED: grade update PUT' + req.params.id);
+exports.grade_update_put = async function(req, res) {
+console.log(`update on id ${req.params.id} with body
+${JSON.stringify(req.body)}`)
+try {
+let toUpdate = await grade.findById( req.params.id)
+// Do updates of properties
+if(req.body.grade_type)
+toUpdate.grade_type = req.body.grade_type;
+if(req.body.cost) toUpdate.cost = req.body.cost;
+if(req.body.size) toUpdate.size = req.body.size;
+let result = await toUpdate.save();
+console.log("Sucess " + result)
+res.send(result)
+} catch (err) {
+res.status(500)
+res.send(`{"error": ${err}: Update for id ${req.params.id}
+failed`);
+}
 };
 

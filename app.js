@@ -70,14 +70,14 @@ async function recreateDB(){
 // Delete everything
 await grade.deleteMany();
 let instance1 = new
-grade({grade:"ghost", size:'large',
-cost:15.4});
+grade({grade:"B", gradeMarks:99,
+gradeCourse:'Data visualization'});
 let instance2 = new
-grade({grade:"ghosty", size:'small',
-cost:13.8});
+grade({grade:"A", gradeMarks:95,
+gradeCourse:'Civil'});
 let instance3 = new
-grade({grade:"ghostyy", size:'medium',
-cost:20.1});
+grade({grade:"A", gradeMarks:87,
+gradeCourse:'Data Analytics'});
 instance1.save().then(doc=>{
 console.log("First object saved")}
 ).catch(err=>{
