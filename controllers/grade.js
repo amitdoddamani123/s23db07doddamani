@@ -70,8 +70,9 @@ let toUpdate = await grade.findById( req.params.id)
 // Do updates of properties
 if(req.body.grade_type)
 toUpdate.grade_type = req.body.grade_type;
-if(req.body.cost) toUpdate.cost = req.body.cost;
-if(req.body.size) toUpdate.size = req.body.size;
+if(req.body.grade) toUpdate.grade = req.body.grade;
+if(req.body.gradeMarks) toUpdate.gradeMarks = req.body.gradeMarks;
+if(req.body.gradeCourse) toUpdate.gradeCourse = req.body.gradeCourse;
 let result = await toUpdate.save();
 console.log("Sucess " + result)
 res.send(result)
