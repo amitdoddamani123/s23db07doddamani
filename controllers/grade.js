@@ -56,10 +56,18 @@ exports.grade_create_post = async function(req, res) {
     res.send(`{"error": ${err}}`);
     }
     };
-// Handle grade delete form on DELETE.
-exports.grade_delete = function(req, res) {
-res.send('NOT IMPLEMENTED: grade delete DELETE ' + req.params.id);
-};
+// Handle grade delete on DELETE.
+exports.grade_delete = async function(req, res) {
+    console.log("delete " + req.params.id)
+    try {
+    result = await grade.findByIdAndDelete( req.params.id)
+    console.log("Removed " + result)
+    res.send(result)
+    } catch (err) {
+    res.status(500)
+    res.send(`{"error": Error deleting ${err}}`);
+    }
+    };
 
 // Handle grade update form on PUT.
 exports.grade_update_put = async function(req, res) {
@@ -82,4 +90,5 @@ res.send(`{"error": ${err}: Update for id ${req.params.id}
 failed`);
 }
 };
+
 

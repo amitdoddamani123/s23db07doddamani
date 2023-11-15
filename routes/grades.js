@@ -7,6 +7,8 @@ router.get('/', function(req, res, next) {
   res.render('grades', { title: 'Search Results Grades' });
 
   router.get('/', grade_controlers.grade_view_all_Page );
+  /* GET detail grade page */
+router.get('/detail', grade_controlers.grade_view_one_Page);
 
 });
 

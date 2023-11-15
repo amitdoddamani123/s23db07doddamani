@@ -11,6 +11,7 @@ var gradeRouter = require('./routes/grades');
 var boardRouter = require('./routes/board');
 var chooseRouter = require('./routes/choose');
 var resourceRouter = require('./routes/resource');
+var grade1Router = require('./routes/grades1');
 
 var app = express();
 
@@ -37,6 +38,7 @@ app.use('/grades', gradeRouter);
 app.use('/board', boardRouter);
 app.use('/choose', chooseRouter);
 app.use('/resource', resourceRouter);
+app.use('/grades1', grade1Router);
 
 
 
