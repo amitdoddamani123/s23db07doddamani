@@ -6,7 +6,7 @@ exports.grade_view_one_Page = async function(req, res) {
     try{
     result = await grade.findById( req.query.id)
     res.render('gradesdetail',
-    { title: 'grade Detail', toShow: result });
+    { title: 'Grade Detail', toShow: result });
     }
     catch(err){
     res.status(500)
@@ -20,7 +20,7 @@ exports.grade_view_one_Page = async function(req, res) {
 exports.grade_create_Page = function(req, res) {
 console.log("create view")
 try{
-res.render('gradescreate', { title: 'grade Create'});
+res.render('gradescreate', { title: 'Grade Create'});
 }
 catch(err){
 res.status(500)
@@ -34,7 +34,7 @@ exports.grade_update_Page = async function(req, res) {
     console.log("update view for item "+req.query.id)
     try{
     let result = await grade.findById(req.query.id)
-    res.render('gradesupdate', { title: 'grade Update', toShow: result });
+    res.render('gradesupdate', { title: 'Grade Update', toShow: result });
     }
     catch(err){
     res.status(500)
@@ -47,7 +47,7 @@ exports.grade_delete_Page = async function(req, res) {
     console.log("Delete view for id " + req.query.id)
     try{
     result = await grade.findById(req.query.id)
-    res.render('gradesdelete', { title: 'grade Delete', toShow:
+    res.render('gradesdelete', { title: 'Grade Delete', toShow:
     result });
     }
     catch(err){

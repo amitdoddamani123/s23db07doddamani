@@ -11,3 +11,18 @@ a {
   background-color: aquamarine;
   width: 120px;
   }
+
+  .form-group-create {
+    width:fit-content;
+    background-color: rgb(195, 224, 25);
+    padding: 5px;
+  }
+  .gradeAttr1 {
+    background-color: rgba(229, 126, 30, 0.539);
+    width: 120px;
+  }
+  
+  .gradeAttr2 {
+    background-color: rgb(130, 238, 179);
+    width: 120px;
+  }

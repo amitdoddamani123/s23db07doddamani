@@ -1,26 +1,29 @@
 extends layout
 
 block content
-
   h1= title
 
-  - let gradeid = toShow._id
-  - let grade = toShow.grade
-  - let gradeMarks = toShow.gradeMarks
-  - let gradeCourse = toShow.gradeCourse
+  if (toShow == null)
+    h2 No instance to detail
+  else
+    - let gradeid = toShow._id
+    - let grade = toShow.grade
+    - let gradeMarks = toShow.gradeMarks
+    - let gradeCourse = toShow.gradeCourse
 
-  div
-    div.row
-      div(class='gradeAttr mr-3') grade ID is:
-        div #{gradeid}
+    div.container
+      div.row
+        div.gradeAttr1.mr-3 Grade ID is:
+          div #{gradeid}
+
         div.row
-      div(class='gradeAttr mr-3') grade is:
-        div #{grade}
+          div.gradeAttr2.mr-3 Grade is:
+            div #{grade}
 
-    div.row
-      div(class='gradeAttr mr-3') grade marks is:
-        div #{gradeMarks}
+      div.row
+        div.gradeAttr3.mr-3 Grade marks is:
+          div #{gradeMarks}
 
-    div.row
-      div(class='gradeAttr mr-3') grade course is:
-        div #{gradeCourse}
+      div.row
+        div.gradeAttr2.mr-3 Grade course is:
+          div #{gradeCourse}

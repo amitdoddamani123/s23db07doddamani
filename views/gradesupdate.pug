@@ -1,33 +1,42 @@
 extends layout
- 
+
 block content
   h1= title
-  - let gradeid = toShow._id
-  - let grade = toShow.grade
-  - let gradeMarks = toShow.gradeMarks
-  - let gradeCourse = toShow.gradeCourse
- 
-  div.row(class='mb-2')
-    div.mr-1 ID is
-    div #{gradeid}
- 
-  - let actionid = "/resource/grades/" + gradeid
-  form(id='gradeForm', action= actionid, method="PUT")
-    div.form-group
-      label.costumeAttr(for='grade') grade
-      input#grade(type='text', name='grade', value= grade)
-    div.form-group
-      label.costumeAttr(for='gradeMarks') grade Marks
-      input#gradeMarks(type='number', name='gradeMarks', value= gradeMarks)
-    div.form-group
-      label.costumeAttr(for='gradeCourse') grade course
-      input#gradeCourse(type='text', name='gradeCourse', value= gradeCourse)
-    input(type="submit")
- 
+
+  if (toShow == null)
+    h2 No instance to update
+  else
+    - let gradeid = toShow._id
+    - let grade = toShow.grade
+    - let gradeMarks = toShow.gradeMarks
+    - let gradeCourse = toShow.gradeCourse
+
+    div.row(class='mb-2')
+      div.mr-1 ID is
+      div #{gradeid}
+
+    - let actionid = "/resource/grades/" + gradeid
+
+    form(id='gradeForm', action= actionid, method="PUT")
+      div.form-group-create
+        label.costumeAttr(for='grade') grade
+        input#grade(type='text', name='grade', value= grade)
+
+      div.form-group-create
+        label.costumeAttr(for='gradeMarks') grade Marks
+        input#gradeMarks(type='number', name='gradeMarks', value= gradeMarks)
+
+      div.form-group-create
+        label.costumeAttr(for='gradeCourse') grade course
+        input#gradeCourse(type='text', name='gradeCourse', value= gradeCourse)
+
+      input(type="submit")
+
     script.
       document.forms['gradeForm'].addEventListener('submit', (event) => {
         event.preventDefault();
         // TODO do something here to show user that form is being submitted
+
         fetch(event.target.action, {
           method: 'PUT',
           body: new URLSearchParams(new FormData(event.target)) // event.target is the form
