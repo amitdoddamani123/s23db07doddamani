@@ -2,17 +2,18 @@ extends layout
 
 block content
   h1= title
-
-
-  - var results = [{grade: 'A',gradeMarks: 90,gradeCourse: 'Web Application'},{grade: 'B',gradeMarks: 75,gradeCourse: 'OOPS'},{grade: 'C',gradeMarks: 60, gradeCourse: 'ADB'}]
-
+  - var results = results
   div(class="container-fluid")
-    div(class="row")
-      each q, index in results
+    div(class="row m-1")
+      each q,index in results
+        -let destination = `dispatch(\"/grades1/update?id=${'q._id'}\")`
         div(class="col-sm-2" onclick=`buy(${index})`) #{q.grade}, #{q.gradeMarks}, #{q.gradeCourse}
-
-  script.
-    function buy(x)
-    {
-    alert(`your index is ${x}`)
-    } 
+        button.btn(class="btn-primary ml-1", onclick=destination) Update
+        script.
+            function buy(x) 
+            {
+                alert(`your index is ${x}`)
+            }
+            function dispatch(path) {
+            window.location.href=path
+            }
