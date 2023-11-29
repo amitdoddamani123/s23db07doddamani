@@ -4,11 +4,21 @@ block content
   h1= title
   p Welcome to #{title} page.
   p Hey, I am currently working on pug assignment.
-  button(type="button", class="btn btn-info" onclick="goFaster()") Press Me
+
+  if (!user)
+    a(href="/login") Login
+    br
+    a(href="/register") Register
+  else
+    p You are currently logged in as #{user.username}
+    a(href="/grades") Take me to grades
+    br
+    a(href="/logout") Logout
+  //button(type="button", class="btn btn-info" onclick="goFaster()") Press Me
   
-  div(id="faster") Increase the speed
-  a(href="/grades") grades page
-  script.
+  //div(id="faster") Increase the speed
+  //a(href="/grades") grades page
+  //script.
     var mph=20
     var change=1
  
@@ -17,7 +27,8 @@ block content
       change=change+1;
       var fast = document.getElementById('faster');
       fast.innerText = `MPH ${mph} with change ${change}`;
-    }
+    } //
+    
 
     
     
