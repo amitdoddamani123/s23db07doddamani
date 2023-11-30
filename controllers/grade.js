@@ -15,6 +15,7 @@ exports.grade_list = async function(req, res) {
 // Handle a show all view
 exports.grade_view_all_Page = async function(req, res) {
     try{
+    console.log("IN")
     theGrades = await grade.find();
     res.render('grades', { title: 'grade Search Results', results: theGrades });
     }
