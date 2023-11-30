@@ -2,7 +2,7 @@ extends layout
 
 block content
   h1= title
-  - var results = results
+  - var results = [{grade:"B", gradeMarks: 99, gradeCourse: "Data Visualization"},{grade:"A", gradeMarks: 95, gradeCourse: "Civil"},{grade:"A", gradeMarks: 87, gradeCourse: "Data Analytics"}];
   - let destination = `/grades1/create`
     button.btn( class="btn-primary ml-1", onclick= `dispatch("${destination}")`) Create New Grades Item
 
